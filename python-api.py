@@ -26,9 +26,21 @@ class Numbers(Resource):
             return {
                 'message': f"E"
             }, 200
-	elif: 
-
-	#return {'message': Welcome, enter your number."}, 200  # return msg & 200 OK
+	elif args['num'] % 9 == 0:
+            return {
+                'message': f"G"
+            }, 200
+	else: 
+	    if (args['num'] % 7 == 0 AND args['num'] % 9 == 0):
+    		return {
+            	    'message': f"EG"
+            	}, 200
+	    else:
+    		return {
+            	    'message': f"'{args['num']}'"
+            	}, 200
+	
+	return {'message': Welcome, enter your number - Example: /numbers?num=2"}, 200  # return msg & 200 OK
 
 
 api.add_resource(Numbers, '/numbers')  # add endpoints
