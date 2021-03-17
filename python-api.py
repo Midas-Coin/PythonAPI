@@ -10,8 +10,9 @@
 # Date: 17/03/2021
 #########################
 
-from flask import Flask
+from flask import Flask, jsonify
 from flask_restful import Resource, Api, reqparse
+import json
 
 apl = Flask(__name__)
 api = Api(apl)
@@ -23,28 +24,27 @@ class Numbers(Resource):
         args = parser.parse_args()  # parse arguments to dictionary
 
 	if args['num'] % 7 == 0:
-            return {
+            return jsonify({
                 'message': f"E"
-            }, 200
+            }), 200
 	elif args['num'] % 9 == 0:
-            return {
+            return jsonify({
                 'message': f"G"
-            }, 200
+            }), 200
 	else: 
 	    if (args['num'] % 7 == 0 AND args['num'] % 9 == 0):
-    		return {
+    		return jsonify({
             	    'message': f"EG"
-            	}, 200
+            	}), 200
 	    else:
-    		return {
+    		return jsonify({
             	    'message': f"'{args['num']}'"
-            	}, 200
+            	}), 200
 	
-	return {'message': Welcome, enter your number - Example: /numbers?num=2"}, 200  # return msg & 200 OK
+	return jsonify({'message': Welcome, enter your number - Example: /numbers?num=2"}), 200  # return msg & 200 OK
 
 
 api.add_resource(Numbers, '/numbers')  # add endpoints
 
 if __name__ == '__main__':
     apl.run()  # run the Flask application
-
