@@ -3,7 +3,6 @@
 # As per request
 # for the client
 #########################
-# Author: Fletcher Bayley
 # Note: Created for Dan
 # Sorry for being late!
 # Desc: Quick Python API
